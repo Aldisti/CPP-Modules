@@ -6,7 +6,7 @@
 /*   By: adi-stef <adi-stef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 11:24:01 by adi-stef          #+#    #+#             */
-/*   Updated: 2023/06/16 14:30:36 by adi-stef         ###   ########.fr       */
+/*   Updated: 2023/06/17 16:22:32 by adi-stef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ class RPN
 
 RPN::RPN(std::string const &av): _line(av), _ops(0), _out(0)
 {
+	if (av.size() <= 0)
+		throw (RPN::InvalidOperator());
 	for (int i = 0; i < (int)av.size(); i++)
 	{
 		if (!isdigit(av[i]) && std::string("+-*/ ").find(av[i]) == std::string::npos)
